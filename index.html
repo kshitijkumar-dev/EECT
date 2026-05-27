@@ -229,6 +229,71 @@
   }
   .expand-all:hover { color: var(--text); border-color: var(--accent); }
 
+  .qp-section { margin-bottom: 3rem; }
+  .qp-set {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .qp-set-header {
+    padding: 1rem 1.25rem;
+    background: #252535;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .qp-set-header h3 {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .qp-set-header span { color: var(--muted); font-size: 0.82rem; }
+  .qp-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+    align-items: flex-start;
+    transition: background 0.15s;
+  }
+  .qp-item:last-child { border-bottom: none; }
+  .qp-item:hover { background: #ffffff06; }
+  .qp-num {
+    flex-shrink: 0;
+    min-width: 28px;
+    height: 28px;
+    background: #f0c06020;
+    color: var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .qp-text { color: #cccce0; line-height: 1.6; }
+  .qp-text .blank {
+    display: inline-block;
+    border-bottom: 1px dashed var(--muted);
+    min-width: 120px;
+    color: var(--muted);
+  }
+  .qp-tag {
+    flex-shrink: 0;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
+  }
+  .qt-fill { background: #6c8ef520; color: var(--unit1); }
+  .qt-short { background: #6cf0a020; color: var(--unit3); }
+  .qt-long { background: #f06c6c20; color: var(--unit2); }
+  .qt-num { background: #f0c06020; color: var(--gold); }
+
   @media print {
     .nav, .expand-all { display: none; }
     .qa-a { display: block !important; }
@@ -251,6 +316,7 @@
   <a href="#u3">Unit 3: Semiconductors</a>
   <a href="#u4">Unit 4: Signals</a>
   <a href="#u5">Unit 5: Digital Logic</a>
+  <a href="#qp" style="border-color:#f0c06040;color:#f0c060">📋 Exam Questions</a>
 </nav>
 
 <div class="container">
@@ -1151,6 +1217,252 @@ Odd:  x(t) = −x(−t) &nbsp; Example: x(t) = t</div>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════ EXAM QUESTIONS ══════════════════════════════════════════ -->
+<section class="unit qp-section" id="qp">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:#f0c06020;color:var(--gold)">📋</div>
+    <div><h2>Exam Question Paper</h2><small>All questions from your exam — two sets</small></div>
+  </div>
+
+  <!-- SET 1 -->
+  <div class="qp-set">
+    <div class="qp-set-header">
+      <h3>Set 1</h3>
+      <span>— 13 Questions · Mix of Fill-in-the-blank & Short Answer</span>
+    </div>
+
+    <div class="qp-item">
+      <div class="qp-num">1</div>
+      <div class="qp-text">What is the difference between active and passive elements?</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">2</div>
+      <div class="qp-text">Define power factor in AC circuits.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">3</div>
+      <div class="qp-text">In a parallel circuit, voltage is: <span class="blank">__________</span></div>
+      <span class="qp-tag qt-fill">Fill</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">4</div>
+      <div class="qp-text">The RMS value of an AC current is equal to <span class="blank">__________</span></div>
+      <span class="qp-tag qt-fill">Fill</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">5</div>
+      <div class="qp-text">A signal x(t) is even if <span class="blank">__________</span></div>
+      <span class="qp-tag qt-fill">Fill</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">6</div>
+      <div class="qp-text">The working principle of a 3-phase induction motor is based on: <span class="blank">__________</span></div>
+      <span class="qp-tag qt-fill">Fill</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">7</div>
+      <div class="qp-text">A signal that has finite average power but infinite total energy is known as a: <span class="blank">__________</span></div>
+      <span class="qp-tag qt-fill">Fill</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">8</div>
+      <div class="qp-text">The XOR gate can be derived using: <span class="blank">__________</span></div>
+      <span class="qp-tag qt-fill">Fill</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">9</div>
+      <div class="qp-text">State Kirchhoff's Current Law (KCL) with a simple example.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">10</div>
+      <div class="qp-text">A 4-to-1 Multiplexer has how many select lines?</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">11</div>
+      <div class="qp-text">Explain the working principle of a PN junction diode.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">12</div>
+      <div class="qp-text">Define Continuous-Time (CT) and Discrete-Time (DT) signals.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">13</div>
+      <div class="qp-text">Find the supply current "I" of the circuit shown below. <em style="color:var(--muted)">(refer circuit diagram in paper)</em></div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+  </div>
+
+  <!-- SET 2 -->
+  <div class="qp-set">
+    <div class="qp-set-header">
+      <h3>Set 2</h3>
+      <span>— 31 Questions · Short, Long Answer & Numericals</span>
+    </div>
+
+    <div class="qp-item">
+      <div class="qp-num">1</div>
+      <div class="qp-text">Define Universal Gates and list them.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">2</div>
+      <div class="qp-text">Find the equivalent resistance of three resistors: 6 Ω, 12 Ω, and 18 Ω connected in parallel.</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">3</div>
+      <div class="qp-text">Define real power, reactive power, and apparent power in an AC circuit. Mention their units.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">4</div>
+      <div class="qp-text">Illustrate with a neat diagram of Closed Loop System with an example.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">5</div>
+      <div class="qp-text">Add (11011)₂ + (10110)₂</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">6</div>
+      <div class="qp-text">Draw the logic symbol and truth table of an OR gate.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">7</div>
+      <div class="qp-text">Define a stepper motor and briefly explain its working principle.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">8</div>
+      <div class="qp-text">Define real power, reactive power, and apparent power in an AC circuit. Mention their units. <em style="color:var(--muted)">(repeat)</em></div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">9</div>
+      <div class="qp-text">Compare between NPN and PNP transistor with suitable block diagrams along with symbols.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">10</div>
+      <div class="qp-text">Distinguish between Open-loop and Closed-loop control systems with examples.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">11</div>
+      <div class="qp-text">In a power distribution system, the peak AC voltage is given. Calculate the effective voltage supplied to consumers and its average value.</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">12</div>
+      <div class="qp-text">Derive the expression for total resistance and circuit current in a series circuit with three resistors connected to a DC voltage source. Draw the circuit diagram and explain current flow.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">13</div>
+      <div class="qp-text">Convert the hexadecimal number (2F)₁₆ into decimal.</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">14</div>
+      <div class="qp-text">Analyse why NAND and NOR gates are called universal gates by demonstrating how basic logic functions AND and NOT can be realised using any one of them.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">15</div>
+      <div class="qp-text">Explain Even and Odd signals with their mathematical conditions.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">16</div>
+      <div class="qp-text">Compare series and parallel DC circuits with diagrams.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">17</div>
+      <div class="qp-text">In a power distribution system, the peak AC voltage is 100 V. Calculate the effective voltage supplied to consumers and its average value.</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">18</div>
+      <div class="qp-text">Explain the operating principles of a diode, BJT, and MOSFET with neat diagrams, highlighting their differences.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">19</div>
+      <div class="qp-text">Define periodic and aperiodic signals with neat sketches.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">20</div>
+      <div class="qp-text">Compare the operating principles of BJT and MOSFET. Explain why the MOSFET is considered a voltage-controlled device.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">21</div>
+      <div class="qp-text">Explain the working of SR and JK flip-flops with suitable truth tables.</div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">22</div>
+      <div class="qp-text">How is energy consumption charged in a block rate tariff? Illustrate with an example.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">23</div>
+      <div class="qp-text">Perform using 2's complement: &nbsp; a) (9)₁₀ − (4)₁₀ &nbsp;&nbsp; b) (27)₁₀ − (75)₁₀</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">24</div>
+      <div class="qp-text">Explain the working of SR and JK flip-flops with suitable truth tables. <em style="color:var(--muted)">(repeat)</em></div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">25</div>
+      <div class="qp-text">Derive the expression for total resistance and circuit current in a series circuit. Draw the circuit diagram and explain current flow through the circuit. <em style="color:var(--muted)">(repeat)</em></div>
+      <span class="qp-tag qt-long">Long</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">26</div>
+      <div class="qp-text">Represent basic gates with their symbol and truth table.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">27</div>
+      <div class="qp-text">Define Continuous-Time and Discrete-Time signals.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">28</div>
+      <div class="qp-text">Explain the working principle of a PN junction diode. <em style="color:var(--muted)">(repeat)</em></div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">29</div>
+      <div class="qp-text">What is the peak value of an AC waveform, and indicate it in the waveform diagram.</div>
+      <span class="qp-tag qt-short">Short</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">30</div>
+      <div class="qp-text">If I = 141.4 sin(314t), find the maximum current value, frequency, and time period.</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+    <div class="qp-item">
+      <div class="qp-num">31</div>
+      <div class="qp-text">Add the following binary numbers: &nbsp; (a) 11 + 11 &nbsp;&nbsp; (b) 100 + 10 &nbsp;&nbsp; (c) 111 + 11</div>
+      <span class="qp-tag qt-num">Numerical</span>
+    </div>
+  </div>
+</section>
+
 </div>
 
 <script>
@@ -1166,27 +1478,5 @@ Odd:  x(t) = −x(−t) &nbsp; Example: x(t) = t</div>
     if (btn) btn.textContent = allOpen ? 'Expand All' : 'Collapse All';
   }
 </script>
-
-    <p class="credit">
-      Built by 
-      <a href="https://github.com/kshitijkumar-dev" target="_blank">
-        Kshitij Kumar
-      </a>
-    </p>
-  <style>
-.credit {
-  text-align: center;
-  padding: 2rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.credit a {
-  color: var(--accent);
-  text-decoration: none;
-}
-.credit a:hover {
-  text-decoration: underline;
-}
-  </style>
 </body>
 </html>
