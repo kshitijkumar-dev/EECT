@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EEE Answer Bank – 25ESC101</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --surface: #18181f;
+    --card: #1e1e28;
+    --border: #2e2e3e;
+    --accent: #6c8ef5;
+    --accent2: #a78bfa;
+    --gold: #f0c060;
+    --text: #e8e8f0;
+    --muted: #8888aa;
+    --correct: #4ade80;
+    --formula-bg: #12121a;
+    --unit1: #6c8ef5;
+    --unit2: #f06c6c;
+    --unit3: #6cf0a0;
+    --unit4: #f0c060;
+    --unit5: #c084fc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  header {
+    background: linear-gradient(135deg, #0f0f13 0%, #1a1030 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+  header h1 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  header p { color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem; }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 1.2rem 1rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav a {
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .nav a:hover { color: var(--text); border-color: var(--accent); }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  .unit {
+    margin-bottom: 3.5rem;
+  }
+  .unit-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .unit-badge {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .unit-header h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .unit-header small { display: block; color: var(--muted); font-size: 0.82rem; margin-top: 0.1rem; }
+
+  .u1 .unit-badge { background: #6c8ef520; color: var(--unit1); }
+  .u2 .unit-badge { background: #f06c6c20; color: var(--unit2); }
+  .u3 .unit-badge { background: #6cf0a020; color: var(--unit3); }
+  .u4 .unit-badge { background: #f0c06020; color: var(--unit4); }
+  .u5 .unit-badge { background: #c084fc20; color: var(--unit5); }
+
+  .qa-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .qa-q {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.97rem;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    user-select: none;
+    border-bottom: 1px solid transparent;
+    transition: background 0.15s;
+  }
+  .qa-q:hover { background: #ffffff08; }
+  .qa-q .qnum {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-top: 0.05rem;
+  }
+  .u1 .qnum { background: #6c8ef520; color: var(--unit1); }
+  .u2 .qnum { background: #f06c6c20; color: var(--unit2); }
+  .u3 .qnum { background: #6cf0a020; color: var(--unit3); }
+  .u4 .qnum { background: #f0c06020; color: var(--unit4); }
+  .u5 .qnum { background: #c084fc20; color: var(--unit5); }
+
+  .qa-q .toggle { margin-left: auto; color: var(--muted); font-size: 1.1rem; transition: transform 0.2s; flex-shrink: 0; }
+  .qa-card.open .qa-q .toggle { transform: rotate(45deg); }
+  .qa-card.open .qa-q { border-bottom: 1px solid var(--border); }
+
+  .qa-a {
+    display: none;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    font-size: 0.93rem;
+    color: #cccce0;
+  }
+  .qa-card.open .qa-a { display: block; }
+
+  .qa-a h4 {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    margin: 1rem 0 0.4rem;
+  }
+  .qa-a h4:first-child { margin-top: 0; }
+  .qa-a p { margin-bottom: 0.5rem; }
+  .qa-a ul, .qa-a ol { margin: 0.4rem 0 0.6rem 1.4rem; }
+  .qa-a li { margin-bottom: 0.25rem; }
+
+  .formula {
+    background: var(--formula-bg);
+    border: 1px solid #2e2e45;
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.92rem;
+    color: #a0d0ff;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+  }
+  .formula.gold { border-left-color: var(--gold); color: #f0e090; }
+  .formula.green { border-left-color: var(--correct); color: #90f0b0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.75rem 0;
+    font-size: 0.88rem;
+  }
+  th {
+    background: #252535;
+    color: var(--text);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border);
+  }
+  td {
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--border);
+    color: #bbbbd0;
+  }
+  tr:nth-child(even) td { background: #1a1a25; }
+
+  .correct { color: var(--correct); font-weight: 600; }
+  .tag {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .tag-def { background: #6c8ef520; color: var(--unit1); }
+  .tag-num { background: #f0c06020; color: var(--gold); }
+  .tag-mcq { background: #6cf0a020; color: var(--unit3); }
+  .tag-dia { background: #c084fc20; color: var(--unit5); }
+
+  .expand-all {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 1rem;
+    transition: all 0.2s;
+  }
+  .expand-all:hover { color: var(--text); border-color: var(--accent); }
+
+  @media print {
+    .nav, .expand-all { display: none; }
+    .qa-a { display: block !important; }
+    .qa-card { break-inside: avoid; }
+    body { background: white; color: black; }
+    .formula { background: #f0f0f0; color: #003; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>EEE Answer Bank</h1>
+  <p>25ESC101 — Electrical & Electronics Engineering for Computational Thinking &nbsp;|&nbsp; All 5 Units</p>
+</header>
+
+<nav class="nav">
+  <a href="#u1">Unit 1: DC Circuits</a>
+  <a href="#u2">Unit 2: AC Circuits</a>
+  <a href="#u3">Unit 3: Semiconductors</a>
+  <a href="#u4">Unit 4: Signals</a>
+  <a href="#u5">Unit 5: Digital Logic</a>
+</nav>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════ UNIT 1 ══════════════════════════════════════════ -->
+<section class="unit u1" id="u1">
+  <div class="unit-header">
+    <div class="unit-badge">1</div>
+    <div><h2>DC Circuits & Machines</h2><small>KCL · KVL · DC Motors · Tariffs · Stepper Motor</small></div>
+  </div>
+  <button class="expand-all" onclick="toggleUnit('u1')">Expand All</button>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q1</div><span>Differentiate between Active and Passive Elements with suitable examples.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-def">Definition</span>
+      <h4>Active Elements</h4>
+      <p>Components that <strong>supply energy</strong> to a circuit and can provide power gain.</p>
+      <ul><li>Battery</li><li>Generator</li><li>Solar Cell</li><li>Transistor</li></ul>
+      <h4>Passive Elements</h4>
+      <p>Components that <strong>cannot generate energy</strong> — they only store, dissipate, or absorb it.</p>
+      <ul><li>Resistor</li><li>Capacitor</li><li>Inductor</li><li>Transformer</li></ul>
+      <table>
+        <tr><th>Active Elements</th><th>Passive Elements</th></tr>
+        <tr><td>Supply energy</td><td>Consume / store energy</td></tr>
+        <tr><td>Provide gain</td><td>No gain</td></tr>
+        <tr><td>Require external source</td><td>No external source needed</td></tr>
+        <tr><td>Battery, Generator</td><td>Resistor, Capacitor</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q2</div><span>Define Electrical Load. Explain types of electrical loads.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-def">Definition</span>
+      <p><strong>Electrical Load:</strong> Any device that consumes electrical energy and converts it into heat, light, or mechanical energy.</p>
+      <h4>Types</h4>
+      <ul>
+        <li><strong>Resistive Load</strong> — Current & voltage are in phase. Ex: Heater, Iron box, Incandescent lamp.</li>
+        <li><strong>Inductive Load</strong> — Current lags voltage. Ex: Motor, Transformer, Fan.</li>
+        <li><strong>Capacitive Load</strong> — Current leads voltage. Ex: Capacitor bank, Underground cables.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q3</div><span>State and Explain Kirchhoff's Current Law (KCL).</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-def">Definition</span>
+      <p><strong>Statement:</strong> The algebraic sum of all currents at a node is zero.</p>
+      <div class="formula">∑I = 0 &nbsp;&nbsp; OR &nbsp;&nbsp; I_in = I_out</div>
+      <h4>Example</h4>
+      <p>Current entering = 10 A, one branch = 6 A, find other branch:</p>
+      <div class="formula gold">10 = 6 + I &nbsp;→&nbsp; I = 4 A ✓</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q4</div><span>State and Explain Kirchhoff's Voltage Law (KVL).</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-def">Definition</span>
+      <p><strong>Statement:</strong> The algebraic sum of all voltages around a closed loop is zero.</p>
+      <div class="formula">∑V = 0</div>
+      <h4>Example</h4>
+      <p>Supply = 24V, V₁ = 10V, V₂ = 14V</p>
+      <div class="formula gold">24 − 10 − 14 = 0 ✓</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q5</div><span>Explain Series DC Circuit with neat diagram.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-dia">Diagram</span>
+      <p><strong>Definition:</strong> Components connected end-to-end; same current flows through all.</p>
+      <div class="formula">R_T = R₁ + R₂ + R₃
+I = V / R_T</div>
+      <h4>Characteristics</h4>
+      <ul><li>Same current throughout</li><li>Voltage divides across each resistor</li><li>Resistances add directly</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q6</div><span>Compare Series and Parallel DC Circuits.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Series Circuit</th><th>Parallel Circuit</th></tr>
+        <tr><td>Same current</td><td>Same voltage</td></tr>
+        <tr><td>Voltage divides</td><td>Current divides</td></tr>
+        <tr><td>R_T = R₁+R₂+R₃</td><td>1/R_T = 1/R₁+1/R₂+1/R₃</td></tr>
+        <tr><td>One failure breaks circuit</td><td>Others continue working</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q7</div><span>What are Electrical Tariffs? Explain different types.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Tariff:</strong> The rate charged to consumers for electrical energy consumed.</p>
+      <h4>Types</h4>
+      <ul>
+        <li><strong>Flat Rate</strong> — Fixed charge per unit</li>
+        <li><strong>Block Rate</strong> — Different rates for different consumption slabs</li>
+        <li><strong>Maximum Demand</strong> — Based on peak demand drawn</li>
+        <li><strong>Time-of-Day</strong> — Peak vs off-peak pricing</li>
+        <li><strong>Two-Part</strong> — Fixed charge + energy charge</li>
+        <li><strong>Seasonal</strong> — Different rates across seasons</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q8</div><span>Solve a simple numerical based on KVL. Supply = 20V, R₁ = R₂ = 5Ω.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-num">Numerical</span>
+      <div class="formula">I = V / (R₁ + R₂) = 20 / 10 = 2 A</div>
+      <div class="formula">V₁ = 2 × 5 = 10 V
+V₂ = 2 × 5 = 10 V</div>
+      <div class="formula green">KVL check: 20 − 10 − 10 = 0 ✓</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q9</div><span>Explain Construction of DC Machine.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Yoke</strong> — Mechanical support</li>
+        <li><strong>Pole Core</strong> — Carries magnetic flux</li>
+        <li><strong>Pole Shoe</strong> — Spreads flux uniformly</li>
+        <li><strong>Field Winding</strong> — Produces magnetic field</li>
+        <li><strong>Armature Core</strong> — Rotating part with conductors</li>
+        <li><strong>Armature Winding</strong> — Where EMF is induced</li>
+        <li><strong>Commutator</strong> — Converts AC to DC output</li>
+        <li><strong>Brushes</strong> — Collect current from commutator</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q10</div><span>Describe Working Principle of DC Machine.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>Works on <strong>electromagnetic interaction</strong>.</p>
+      <ul>
+        <li><strong>As Generator:</strong> Mechanical Energy → Electrical Energy (Faraday's Law)</li>
+        <li><strong>As Motor:</strong> Electrical Energy → Mechanical Energy (current-carrying conductor in magnetic field experiences force)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q11</div><span>Explain Working of a Stepper Motor.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Definition:</strong> Converts electrical pulses into discrete angular movements.</p>
+      <h4>Working Steps</h4>
+      <ol><li>Stator winding energized</li><li>Magnetic field produced</li><li>Rotor aligns with field</li><li>Next pulse energizes another winding</li><li>Rotor moves one step</li><li>Continuous pulses → rotation</li></ol>
+      <h4>Applications</h4>
+      <p>CNC machines, Robotics, Printers, 3D printers</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q12</div><span>Advantages of using DC Motors in industrial applications.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul><li>High starting torque</li><li>Excellent speed control</li><li>Quick acceleration</li><li>Good overload capacity</li><li>Suitable for cranes and hoists</li><li>Reliable operation</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q13</div><span>Define Stepper Motor and mention advantages.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Definition:</strong> A motor that rotates in fixed angular steps when electrical pulses are applied.</p>
+      <h4>Advantages</h4>
+      <ul><li>Accurate positioning</li><li>Digital control</li><li>High reliability</li><li>Low maintenance</li><li>Repeatable motion</li><li>Easy speed control</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q14</div><span>Applications of Stepper Motor and DC Motor.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Stepper Motor</th><th>DC Motor</th></tr>
+        <tr><td>Robotics</td><td>Electric cranes</td></tr>
+        <tr><td>CNC machines</td><td>Conveyors</td></tr>
+        <tr><td>Printers / Plotters</td><td>Elevators</td></tr>
+        <tr><td>3D printers</td><td>Electric vehicles</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q15</div><span>Which law states algebraic sum of currents entering a node is zero?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-mcq">MCQ</span>
+      <p class="correct">Answer: Kirchhoff's Current Law (KCL)</p>
+      <div class="formula">∑I = 0</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q16</div><span>Numerical: V = 12V, I = 2A, t = 1hr. Find Power and Energy.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-num">Numerical</span>
+      <div class="formula">P = V × I = 12 × 2 = 24 W</div>
+      <div class="formula gold">E = P × t = 24 × 1 = 24 Wh</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q17</div><span>In a parallel circuit, voltage is: (MCQ)</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-mcq">MCQ</span>
+      <p class="correct">✅ A) Same across all branches</p>
+      <p>Every branch is directly connected across the same supply terminals.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q18</div><span>How is energy consumption charged in Block Rate Tariff? Illustrate with example.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-num">Numerical</span>
+      <p>Consumption = 250 units. Rates: 0–100 units @ ₹3/unit, 101–300 @ ₹5/unit</p>
+      <div class="formula">First 100 units: 100 × 3 = ₹300
+Next 150 units: 150 × 5 = ₹750</div>
+      <div class="formula gold">Total Bill = ₹300 + ₹750 = ₹1050</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u1">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q19</div><span>10Ω resistor across 20V DC for 5 minutes. Find current, power, energy.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-num">Numerical</span>
+      <div class="formula">Given: R = 10Ω, V = 20V, t = 5 min = 300 s</div>
+      <div class="formula">I = V/R = 20/10 = 2 A</div>
+      <div class="formula">P = V × I = 20 × 2 = 40 W</div>
+      <div class="formula gold">E = P × t = 40 × 300 = 12000 J = 3.33 Wh</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ UNIT 2 ══════════════════════════════════════════ -->
+<section class="unit u2" id="u2">
+  <div class="unit-header">
+    <div class="unit-badge">2</div>
+    <div><h2>AC Circuits & Motors</h2><small>Phasors · Power · Induction Motor · Servomotor</small></div>
+  </div>
+  <button class="expand-all" onclick="toggleUnit('u2')">Expand All</button>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q1</div><span>Explain Phasor Representation of Sinusoidal Quantities.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Phasor:</strong> A rotating vector representing magnitude and phase angle of a sinusoidal quantity.</p>
+      <div class="formula">v(t) = Vₘ sin(ωt + φ)
+Phasor form: V = V∠φ</div>
+      <h4>Advantages</h4>
+      <ul><li>Simplifies AC circuit analysis</li><li>Easy addition/subtraction of sinusoidal quantities</li><li>Clearly shows phase difference</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q2</div><span>Analyze a purely resistive AC circuit with waveform and phasor diagram.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">v = Vₘ sin(ωt)
+i = Iₘ sin(ωt)</div>
+      <p><strong>Observation:</strong> Voltage and current are <strong>in phase</strong> (φ = 0°)</p>
+      <div class="formula gold">Power Factor = cos(0°) = 1</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q3</div><span>Define Real, Reactive, and Apparent Power.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Type</th><th>Formula</th><th>Unit</th></tr>
+        <tr><td>Real Power (P)</td><td>P = VI cos φ</td><td>Watt (W)</td></tr>
+        <tr><td>Reactive Power (Q)</td><td>Q = VI sin φ</td><td>VAR</td></tr>
+        <tr><td>Apparent Power (S)</td><td>S = VI</td><td>VA</td></tr>
+      </table>
+      <div class="formula">S² = P² + Q²</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q4</div><span>Formula for Capacitive Reactance.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">X_C = 1 / (2πfC) &nbsp;&nbsp; [Unit: Ohm (Ω)]</div>
+      <p>As frequency increases, X_C decreases.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q5</div><span>Formula for Inductive Reactance.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">X_L = 2πfL &nbsp;&nbsp; [Unit: Ohm (Ω)]</div>
+      <p>As frequency increases, X_L increases.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q6</div><span>What is Peak Value of an AC waveform?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Peak Value (Vₘ or Iₘ):</strong> The maximum value attained by voltage or current during one complete cycle.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q7</div><span>What is RMS Value of an AC waveform?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>RMS Value:</strong> Equivalent DC value that produces the same heating effect.</p>
+      <div class="formula">V_rms = Vₘ / √2 = 0.707 × Vₘ
+I_rms = 0.707 × Iₘ</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q8</div><span>What is Instantaneous Value of an AC waveform?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Instantaneous Value:</strong> Value of voltage/current at any particular instant of time.</p>
+      <div class="formula">v(t) = Vₘ sin(ωt)</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q9</div><span>Define Power Factor and explain its significance.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Power Factor (PF) = cos φ = P / S</div>
+      <h4>Significance</h4>
+      <ul><li>Indicates efficiency of power usage</li><li>Reduces transmission losses</li><li>Improves voltage regulation</li><li>Lowers electricity cost</li><li>Increases system capacity</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q10</div><span>Explain Construction of Three-Phase Induction Motor.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Stator</strong> — Stationary part; contains three-phase winding</li>
+        <li><strong>Rotor</strong> — Rotating part; squirrel cage or wound type</li>
+        <li><strong>Air Gap</strong> — Space between stator and rotor</li>
+        <li><strong>Shaft</strong> — Delivers mechanical output power</li>
+        <li><strong>Bearings</strong> — Support rotor rotation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q11</div><span>Describe Working Principle of Three-Phase Induction Motor.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Principle:</strong> Electromagnetic Induction</p>
+      <ol>
+        <li>Three-phase supply applied to stator</li>
+        <li>Rotating magnetic field (RMF) produced</li>
+        <li>Rotor conductors cut the magnetic flux</li>
+        <li>EMF induced in rotor (Faraday's Law)</li>
+        <li>Rotor current flows</li>
+        <li>Torque developed → rotor rotates</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q12</div><span>Explain Working of a Servomotor.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Definition:</strong> A motor used for precise position and speed control.</p>
+      <ol>
+        <li>Input command applied</li>
+        <li>Error detector compares actual vs desired position</li>
+        <li>Controller sends correction signal</li>
+        <li>Motor rotates to correct position</li>
+        <li>Feedback continuously corrects error</li>
+      </ol>
+      <h4>Applications</h4>
+      <p>Robotics, CNC machines, Automation, Aerospace</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q13</div><span>Applications of Induction Motors vs Servomotors.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Induction Motor</th><th>Servomotor</th></tr>
+        <tr><td>Fans</td><td>Robotics</td></tr>
+        <tr><td>Pumps</td><td>CNC machines</td></tr>
+        <tr><td>Compressors</td><td>Aerospace systems</td></tr>
+        <tr><td>Conveyors</td><td>Position control</td></tr>
+        <tr><td>Industrial drives</td><td>Automation</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q14</div><span>Advantages of AC Motors in industrial applications.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul><li>Low maintenance</li><li>High efficiency</li><li>Rugged construction</li><li>Reliable operation</li><li>Cost effective</li><li>Capable of continuous operation</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q15</div><span>Define Stepper Motor and mention advantages. (Unit 2 repeat)</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>See Unit 1, Q13 — same definition and advantages apply.</p>
+      <p><strong>Definition:</strong> A motor rotating in fixed angular steps when electrical pulses are applied.</p>
+      <p><strong>Advantages:</strong> Accurate positioning, digital control, high reliability, low maintenance, repeatable motion.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u2">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q16</div><span>Peak voltage = 100V. Calculate RMS and Average value.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-num">Numerical</span>
+      <div class="formula">V_rms = 0.707 × Vₘ = 0.707 × 100 = 70.7 V</div>
+      <div class="formula gold">V_avg = 0.637 × Vₘ = 0.637 × 100 = 63.7 V</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ UNIT 3 ══════════════════════════════════════════ -->
+<section class="unit u3" id="u3">
+  <div class="unit-header">
+    <div class="unit-badge">3</div>
+    <div><h2>Semiconductor Devices & Control Systems</h2><small>Diode · BJT · MOSFET · Open/Closed Loop</small></div>
+  </div>
+  <button class="expand-all" onclick="toggleUnit('u3')">Expand All</button>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q1</div><span>Define a PN Junction Diode.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-def">Definition</span>
+      <p>A <strong>PN junction diode</strong> is a two-terminal semiconductor device formed by joining P-type and N-type semiconductor materials.</p>
+      <ul>
+        <li>Allows current in <strong>forward direction</strong></li>
+        <li>Blocks current in <strong>reverse direction</strong></li>
+        <li>Terminals: Anode (P-side), Cathode (N-side)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q2</div><span>Name the three terminals of a BJT (Bipolar Junction Transistor).</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Emitter (E)</strong> — Emits charge carriers</li>
+        <li><strong>Base (B)</strong> — Controls transistor operation</li>
+        <li><strong>Collector (C)</strong> — Collects charge carriers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q3</div><span>What are the terminals of a MOSFET?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Gate (G)</strong> — Controls channel conductivity</li>
+        <li><strong>Drain (D)</strong> — Current exits here</li>
+        <li><strong>Source (S)</strong> — Current enters here</li>
+        <li><strong>Body/Substrate</strong> — (in some MOSFETs)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q4</div><span>State Applications of a Diode.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul><li>Rectifiers</li><li>Clippers & Clampers</li><li>Voltage regulators</li><li>LED circuits</li><li>Solar cells</li><li>Signal detection</li><li>Protection circuits</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q5</div><span>Expand MOSFET.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p class="correct">Metal Oxide Semiconductor Field Effect Transistor</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q6</div><span>What is Forward Bias in a Diode?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Forward Bias:</strong> Positive terminal connected to P-side, Negative terminal to N-side.</p>
+      <h4>Effects</h4>
+      <ul><li>Depletion layer decreases</li><li>Barrier potential reduces</li><li>Current flows easily</li><li>Diode behaves like a closed switch</li></ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q7</div><span>Explain the Working Principle of PN Junction Diode.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>Forward Bias</h4>
+      <p>+ve → P-side, −ve → N-side → Depletion narrows → Current flows</p>
+      <h4>Reverse Bias</h4>
+      <p>+ve → N-side, −ve → P-side → Depletion widens → Current blocked</p>
+      <h4>Applications</h4>
+      <p>Rectification, signal processing, protection circuits</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q8</div><span>Compare NPN and PNP Transistors with symbols.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Property</th><th>NPN</th><th>PNP</th></tr>
+        <tr><td>Structure</td><td>N–P–N</td><td>P–N–P</td></tr>
+        <tr><td>Arrow direction</td><td>Points outward</td><td>Points inward</td></tr>
+        <tr><td>Charge carrier</td><td>Electrons</td><td>Holes</td></tr>
+        <tr><td>Base bias</td><td>Positive w.r.t. emitter</td><td>Negative w.r.t. emitter</td></tr>
+        <tr><td>Speed</td><td>Faster switching</td><td>Relatively slower</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q9</div><span>A robotic system produces large oscillations for small input. Is it BIBO stable?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>BIBO:</strong> Bounded Input → Bounded Output</p>
+      <p>A system is BIBO stable if every bounded input produces a bounded output.</p>
+      <h4>Analysis</h4>
+      <ul><li>Input is bounded (small)</li><li>Output is excessively large (unbounded)</li></ul>
+      <p class="correct" style="color:#f06c6c">Conclusion: The system is NOT BIBO stable. ❌</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q10</div><span>Explain Closed Loop Control System with block diagram.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Definition:</strong> Uses feedback to compare actual output with desired output and reduce error.</p>
+      <div class="formula">Reference Input → [Controller] → [Process] → Output
+                                      ↑                              |
+                                      └──────── Feedback ────────────┘</div>
+      <h4>Working</h4>
+      <ol><li>Input given</li><li>Controller processes it</li><li>Output generated</li><li>Output measured</li><li>Feedback returned</li><li>Error continuously minimized</li></ol>
+      <h4>Example</h4>
+      <p>Automatic clothes dryer — moisture sensor adjusts dryer operation</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q11</div><span>Differentiate Open Loop and Closed Loop Control Systems.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Open Loop</th><th>Closed Loop</th></tr>
+        <tr><td>No feedback</td><td>Feedback present</td></tr>
+        <tr><td>Less accurate</td><td>More accurate</td></tr>
+        <tr><td>Simple</td><td>Complex</td></tr>
+        <tr><td>Low cost</td><td>Higher cost</td></tr>
+        <tr><td>Cannot correct errors</td><td>Corrects errors automatically</td></tr>
+        <tr><td>Electric iron, Toaster</td><td>AC thermostat, Cruise control</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u3">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q12</div><span>An open loop control system has: (MCQ)</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-mcq">MCQ</span>
+      <p class="correct">✅ C) No feedback</p>
+      <p>Output is not compared with input in an open loop system.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ UNIT 4 ══════════════════════════════════════════ -->
+<section class="unit u4" id="u4">
+  <div class="unit-header">
+    <div class="unit-badge">4</div>
+    <div><h2>Signals & Digital Systems</h2><small>CT/DT · Even/Odd · Periodic · Analog/Digital</small></div>
+  </div>
+  <button class="expand-all" onclick="toggleUnit('u4')">Expand All</button>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q1</div><span>Define a Continuous-Time (CT) Signal.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal <strong>defined at every instant of time</strong>.</p>
+      <p><strong>Examples:</strong> Temperature variation, ECG signal, Speech signal, AC waveform.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q2</div><span>What is a Discrete-Time (DT) Signal?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal defined <strong>only at discrete time intervals</strong>.</p>
+      <p><strong>Examples:</strong> Digital meter readings, Computer data, Sampled signals.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q3</div><span>Define an Even Signal.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal is <strong>even</strong> if it is symmetric about the vertical axis.</p>
+      <div class="formula">x(t) = x(−t)</div>
+      <p><strong>Example:</strong> x(t) = t²</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q4</div><span>Define an Odd Signal.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal is <strong>odd</strong> if it is antisymmetric about the vertical axis.</p>
+      <div class="formula">x(t) = −x(−t)</div>
+      <p><strong>Example:</strong> x(t) = t</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q5</div><span>What is a Periodic Signal?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal that <strong>repeats after a fixed time period T</strong>.</p>
+      <div class="formula">x(t) = x(t + T)</div>
+      <p><strong>Example:</strong> Sinusoidal AC waveform</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q6</div><span>Define an Aperiodic Signal.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal that <strong>does not repeat itself</strong> over time.</p>
+      <p><strong>Examples:</strong> ECG signal, Speech signal, Random noise</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q7</div><span>What is an Energy Signal?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal with <strong>finite energy and zero average power</strong>.</p>
+      <div class="formula">0 &lt; E &lt; ∞ &nbsp;&nbsp; and &nbsp;&nbsp; P = 0</div>
+      <p><strong>Example:</strong> Finite duration pulse</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q8</div><span>Define a Power Signal.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>A signal with <strong>finite average power but infinite energy</strong>.</p>
+      <div class="formula">0 &lt; P &lt; ∞ &nbsp;&nbsp; and &nbsp;&nbsp; E = ∞</div>
+      <p><strong>Example:</strong> Periodic sinusoidal signal</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q9</div><span>Differentiate Analog and Digital Signals.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Analog Signal</th><th>Digital Signal</th></tr>
+        <tr><td>Continuous</td><td>Discrete</td></tr>
+        <tr><td>Infinite values</td><td>Finite levels (0 & 1)</td></tr>
+        <tr><td>Noise sensitive</td><td>Less noise sensitive</td></tr>
+        <tr><td>Difficult to store</td><td>Easy to store</td></tr>
+        <tr><td>Ex: Voice, Temperature</td><td>Ex: Computer data</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q10</div><span>Differentiate CT and DT Signals.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>CT Signal</th><th>DT Signal</th></tr>
+        <tr><td>Continuous in time</td><td>Defined at discrete instants</td></tr>
+        <tr><td>Analog nature</td><td>Digital nature</td></tr>
+        <tr><td>Exists every instant</td><td>Sampled values only</td></tr>
+        <tr><td>Ex: Temperature</td><td>Ex: Digital data</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q11</div><span>Explain Even and Odd Signals with examples.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Even: x(t) = x(−t) &nbsp;&nbsp; Example: x(t) = t²
+Odd:  x(t) = −x(−t) &nbsp; Example: x(t) = t</div>
+      <p>Even signals are symmetric; odd signals are antisymmetric about the time axis.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q12</div><span>Distinguish between Periodic and Aperiodic Signals.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Periodic</th><th>Aperiodic</th></tr>
+        <tr><td>Repeats regularly</td><td>Does not repeat</td></tr>
+        <tr><td>Has period T</td><td>No fixed period</td></tr>
+        <tr><td>Predictable</td><td>Non-repeating</td></tr>
+        <tr><td>AC waveform</td><td>ECG, speech</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q16</div><span>Convert Hexadecimal 2F to Decimal.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-num">Numerical</span>
+      <div class="formula">(2F)₁₆ = 2 × 16¹ + F × 16⁰
+       = 2 × 16 + 15 × 1
+       = 32 + 15</div>
+      <div class="formula gold">= 47 (decimal)</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q17</div><span>Perform Binary Addition: 1011 + 1101</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-num">Numerical</span>
+      <div class="formula">  1011
++ 1101
+------</div>
+      <div class="formula gold">= 11000 (binary) = 24 (decimal)</div>
+      <p>Apply normal carry rules: 1+1 = 10 (write 0, carry 1)</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q19</div><span>Heart monitoring system vs Digital meter — which signal type?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Heart Monitoring System</strong> → Continuous measurement → <span class="correct">Continuous-Time Signal</span></li>
+        <li><strong>Digital Meter</strong> → Measurements at fixed intervals → <span class="correct">Discrete-Time Signal</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u4">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q20</div><span>Which describes a periodic signal? (MCQ)</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-mcq">MCQ</span>
+      <p class="correct">✅ a. A signal that repeats itself at regular intervals T</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ UNIT 5 ══════════════════════════════════════════ -->
+<section class="unit u5" id="u5">
+  <div class="unit-header">
+    <div class="unit-badge">5</div>
+    <div><h2>Digital Logic & Sequential Circuits</h2><small>Gates · MUX · Encoder · Decoder · Universal Gates</small></div>
+  </div>
+  <button class="expand-all" onclick="toggleUnit('u5')">Expand All</button>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q1</div><span>Which gate is called a Universal Gate? (MCQ)</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <span class="tag tag-mcq">MCQ</span>
+      <p class="correct">✅ c) NAND (also NOR is a universal gate)</p>
+      <p>Universal gates can implement any Boolean function on their own.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q2</div><span>Represent basic gates (AND, OR, NOT) with symbol and truth table.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>AND Gate &nbsp; Y = A · B</h4>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table>
+      <h4>OR Gate &nbsp; Y = A + B</h4>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table>
+      <h4>NOT Gate &nbsp; Y = A'</h4>
+      <table>
+        <tr><th>A</th><th>Y</th></tr>
+        <tr><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q3</div><span>Define MUX. Draw block diagram and truth table of 4-to-1 MUX.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Multiplexer (MUX):</strong> Selects one input from many inputs and routes it to one output.</p>
+      <div class="formula">4 Inputs (I0–I3) + 2 Select lines (S1, S0) → 1 Output (Y)</div>
+      <table>
+        <tr><th>S1</th><th>S0</th><th>Output</th></tr>
+        <tr><td>0</td><td>0</td><td>I₀</td></tr>
+        <tr><td>0</td><td>1</td><td>I₁</td></tr>
+        <tr><td>1</td><td>0</td><td>I₂</td></tr>
+        <tr><td>1</td><td>1</td><td>I₃</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q4</div><span>Draw logic symbol and truth table of NAND Gate.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Y = (A · B)' &nbsp;&nbsp; [NOT of AND]</div>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td></tr>
+      </table>
+      <p>Output is 0 only when both inputs are 1.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q5</div><span>Define Universal Gates and list them.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Universal Gates:</strong> Gates that can implement any Boolean logic function on their own.</p>
+      <p class="correct">Universal Gates: NAND and NOR</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q6</div><span>Draw logic symbol and truth table of OR Gate.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Y = A + B</div>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q7</div><span>Draw logic symbol and truth table of AND Gate.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Y = A · B</div>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q8</div><span>Draw logic symbol and truth table of NOR Gate.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Y = (A + B)' &nbsp;&nbsp; [NOT of OR]</div>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td></tr>
+      </table>
+      <p>Output is 1 only when both inputs are 0.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q9</div><span>Draw logic symbol and truth table of NOT Gate.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Y = A' &nbsp;&nbsp; [Inverter]</div>
+      <table>
+        <tr><th>A</th><th>Y</th></tr>
+        <tr><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q10</div><span>NAND Gate Truth Table (repeat / standalone question).</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Y = (A · B)'</div>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="u5">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">Q11</div><span>Explain Encoder and Decoder with block diagram.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>Encoder</h4>
+      <p>Converts <strong>many inputs into fewer binary output lines</strong>.</p>
+      <div class="formula">Many Inputs → Few Binary Outputs</div>
+      <p><strong>Applications:</strong> Keyboard encoding, Data compression, Priority systems</p>
+      <h4>Decoder</h4>
+      <p>Converts <strong>binary input into one active output line</strong>.</p>
+      <div class="formula">Few Binary Inputs → Many Outputs (one active at a time)</div>
+      <h4>2-to-4 Decoder Truth Table</h4>
+      <table>
+        <tr><th>A</th><th>B</th><th>Active Output</th></tr>
+        <tr><td>0</td><td>0</td><td>Y₀</td></tr>
+        <tr><td>0</td><td>1</td><td>Y₁</td></tr>
+        <tr><td>1</td><td>0</td><td>Y₂</td></tr>
+        <tr><td>1</td><td>1</td><td>Y₃</td></tr>
+      </table>
+      <p><strong>Applications:</strong> Memory addressing, Signal routing, Data distribution</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+  function toggle(qEl) {
+    const card = qEl.closest('.qa-card');
+    card.classList.toggle('open');
+  }
+  function toggleUnit(unitId) {
+    const cards = document.querySelectorAll(`[data-unit="${unitId}"]`);
+    const allOpen = [...cards].every(c => c.classList.contains('open'));
+    cards.forEach(c => allOpen ? c.classList.remove('open') : c.classList.add('open'));
+    const btn = document.querySelector(`#${unitId} .expand-all`);
+    if (btn) btn.textContent = allOpen ? 'Expand All' : 'Collapse All';
+  }
+</script>
+</body>
+</html>
