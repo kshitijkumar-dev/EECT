@@ -140,6 +140,17 @@
   .u3 .qnum { background: #6cf0a020; color: var(--unit3); }
   .u4 .qnum { background: #f0c06020; color: var(--unit4); }
   .u5 .qnum { background: #c084fc20; color: var(--unit5); }
+  .qe .qnum { background: #f0c06020; color: var(--gold); }
+  .qe-set-label {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 1.5rem 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border);
+  }
+  .qe-set-label span { color: var(--muted); font-size: 0.8rem; font-family: 'Source Sans 3', sans-serif; font-weight: 300; margin-left: 0.5rem; }
 
   .qa-q .toggle { margin-left: auto; color: var(--muted); font-size: 1.1rem; transition: transform 0.2s; flex-shrink: 0; }
   .qa-card.open .qa-q .toggle { transform: rotate(45deg); }
@@ -1218,249 +1229,485 @@ Odd:  x(t) = −x(−t) &nbsp; Example: x(t) = t</div>
 </section>
 
 <!-- ══════════════════════════════════════════ EXAM QUESTIONS ══════════════════════════════════════════ -->
-<section class="unit qp-section" id="qp">
+<section class="unit qe" id="qp">
   <div class="unit-header">
     <div class="unit-badge" style="background:#f0c06020;color:var(--gold)">📋</div>
-    <div><h2>Exam Question Paper</h2><small>All questions from your exam — two sets</small></div>
+    <div><h2>Exam Question Paper</h2><small>All questions with full answers — Set 1 (13Q) + Set 2 (31Q)</small></div>
   </div>
+  <button class="expand-all" onclick="toggleUnit('qe')">Expand All</button>
 
-  <!-- SET 1 -->
-  <div class="qp-set">
-    <div class="qp-set-header">
-      <h3>Set 1</h3>
-      <span>— 13 Questions · Mix of Fill-in-the-blank & Short Answer</span>
-    </div>
+  <p class="qe-set-label">Set 1 <span>— 13 Questions · Fill-in-the-blank &amp; Short Answer</span></p>
 
-    <div class="qp-item">
-      <div class="qp-num">1</div>
-      <div class="qp-text">What is the difference between active and passive elements?</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">2</div>
-      <div class="qp-text">Define power factor in AC circuits.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">3</div>
-      <div class="qp-text">In a parallel circuit, voltage is: <span class="blank">__________</span></div>
-      <span class="qp-tag qt-fill">Fill</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">4</div>
-      <div class="qp-text">The RMS value of an AC current is equal to <span class="blank">__________</span></div>
-      <span class="qp-tag qt-fill">Fill</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">5</div>
-      <div class="qp-text">A signal x(t) is even if <span class="blank">__________</span></div>
-      <span class="qp-tag qt-fill">Fill</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">6</div>
-      <div class="qp-text">The working principle of a 3-phase induction motor is based on: <span class="blank">__________</span></div>
-      <span class="qp-tag qt-fill">Fill</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">7</div>
-      <div class="qp-text">A signal that has finite average power but infinite total energy is known as a: <span class="blank">__________</span></div>
-      <span class="qp-tag qt-fill">Fill</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">8</div>
-      <div class="qp-text">The XOR gate can be derived using: <span class="blank">__________</span></div>
-      <span class="qp-tag qt-fill">Fill</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">9</div>
-      <div class="qp-text">State Kirchhoff's Current Law (KCL) with a simple example.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">10</div>
-      <div class="qp-text">A 4-to-1 Multiplexer has how many select lines?</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">11</div>
-      <div class="qp-text">Explain the working principle of a PN junction diode.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">12</div>
-      <div class="qp-text">Define Continuous-Time (CT) and Discrete-Time (DT) signals.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">13</div>
-      <div class="qp-text">Find the supply current "I" of the circuit shown below. <em style="color:var(--muted)">(refer circuit diagram in paper)</em></div>
-      <span class="qp-tag qt-num">Numerical</span>
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·1</div><span>What is the difference between active and passive elements?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Active elements</strong> supply or generate energy — Battery, Generator, Transistor.</p>
+      <p><strong>Passive elements</strong> only consume, store or dissipate energy, cannot generate it — Resistor, Capacitor, Inductor.</p>
     </div>
   </div>
 
-  <!-- SET 2 -->
-  <div class="qp-set">
-    <div class="qp-set-header">
-      <h3>Set 2</h3>
-      <span>— 31 Questions · Short, Long Answer & Numericals</span>
-    </div>
-
-    <div class="qp-item">
-      <div class="qp-num">1</div>
-      <div class="qp-text">Define Universal Gates and list them.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">2</div>
-      <div class="qp-text">Find the equivalent resistance of three resistors: 6 Ω, 12 Ω, and 18 Ω connected in parallel.</div>
-      <span class="qp-tag qt-num">Numerical</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">3</div>
-      <div class="qp-text">Define real power, reactive power, and apparent power in an AC circuit. Mention their units.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">4</div>
-      <div class="qp-text">Illustrate with a neat diagram of Closed Loop System with an example.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">5</div>
-      <div class="qp-text">Add (11011)₂ + (10110)₂</div>
-      <span class="qp-tag qt-num">Numerical</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">6</div>
-      <div class="qp-text">Draw the logic symbol and truth table of an OR gate.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">7</div>
-      <div class="qp-text">Define a stepper motor and briefly explain its working principle.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">8</div>
-      <div class="qp-text">Define real power, reactive power, and apparent power in an AC circuit. Mention their units. <em style="color:var(--muted)">(repeat)</em></div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">9</div>
-      <div class="qp-text">Compare between NPN and PNP transistor with suitable block diagrams along with symbols.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">10</div>
-      <div class="qp-text">Distinguish between Open-loop and Closed-loop control systems with examples.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">11</div>
-      <div class="qp-text">In a power distribution system, the peak AC voltage is given. Calculate the effective voltage supplied to consumers and its average value.</div>
-      <span class="qp-tag qt-num">Numerical</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">12</div>
-      <div class="qp-text">Derive the expression for total resistance and circuit current in a series circuit with three resistors connected to a DC voltage source. Draw the circuit diagram and explain current flow.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">13</div>
-      <div class="qp-text">Convert the hexadecimal number (2F)₁₆ into decimal.</div>
-      <span class="qp-tag qt-num">Numerical</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">14</div>
-      <div class="qp-text">Analyse why NAND and NOR gates are called universal gates by demonstrating how basic logic functions AND and NOT can be realised using any one of them.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">15</div>
-      <div class="qp-text">Explain Even and Odd signals with their mathematical conditions.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">16</div>
-      <div class="qp-text">Compare series and parallel DC circuits with diagrams.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">17</div>
-      <div class="qp-text">In a power distribution system, the peak AC voltage is 100 V. Calculate the effective voltage supplied to consumers and its average value.</div>
-      <span class="qp-tag qt-num">Numerical</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">18</div>
-      <div class="qp-text">Explain the operating principles of a diode, BJT, and MOSFET with neat diagrams, highlighting their differences.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">19</div>
-      <div class="qp-text">Define periodic and aperiodic signals with neat sketches.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">20</div>
-      <div class="qp-text">Compare the operating principles of BJT and MOSFET. Explain why the MOSFET is considered a voltage-controlled device.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">21</div>
-      <div class="qp-text">Explain the working of SR and JK flip-flops with suitable truth tables.</div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">22</div>
-      <div class="qp-text">How is energy consumption charged in a block rate tariff? Illustrate with an example.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">23</div>
-      <div class="qp-text">Perform using 2's complement: &nbsp; a) (9)₁₀ − (4)₁₀ &nbsp;&nbsp; b) (27)₁₀ − (75)₁₀</div>
-      <span class="qp-tag qt-num">Numerical</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">24</div>
-      <div class="qp-text">Explain the working of SR and JK flip-flops with suitable truth tables. <em style="color:var(--muted)">(repeat)</em></div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">25</div>
-      <div class="qp-text">Derive the expression for total resistance and circuit current in a series circuit. Draw the circuit diagram and explain current flow through the circuit. <em style="color:var(--muted)">(repeat)</em></div>
-      <span class="qp-tag qt-long">Long</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">26</div>
-      <div class="qp-text">Represent basic gates with their symbol and truth table.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">27</div>
-      <div class="qp-text">Define Continuous-Time and Discrete-Time signals.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">28</div>
-      <div class="qp-text">Explain the working principle of a PN junction diode. <em style="color:var(--muted)">(repeat)</em></div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">29</div>
-      <div class="qp-text">What is the peak value of an AC waveform, and indicate it in the waveform diagram.</div>
-      <span class="qp-tag qt-short">Short</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">30</div>
-      <div class="qp-text">If I = 141.4 sin(314t), find the maximum current value, frequency, and time period.</div>
-      <span class="qp-tag qt-num">Numerical</span>
-    </div>
-    <div class="qp-item">
-      <div class="qp-num">31</div>
-      <div class="qp-text">Add the following binary numbers: &nbsp; (a) 11 + 11 &nbsp;&nbsp; (b) 100 + 10 &nbsp;&nbsp; (c) 111 + 11</div>
-      <span class="qp-tag qt-num">Numerical</span>
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·2</div><span>Define power factor in AC circuits.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Power Factor = cos φ = Real Power (P) / Apparent Power (S)</div>
+      <p>Range: 0 to 1. Unity PF (1) means all power is usefully consumed. Low PF means wasted reactive power.</p>
     </div>
   </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·3</div><span>In a parallel circuit, voltage is: __________</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p class="correct">Same across all branches (equal to supply voltage).</p>
+      <p>Every branch connects directly across the same two supply terminals.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·4</div><span>The RMS value of an AC current is equal to __________</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">I_rms = Im / √2 = 0.707 × Im</div>
+      <p>The equivalent DC value that produces the same heating effect as the AC current.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·5</div><span>A signal x(t) is even if __________</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">x(t) = x(−t)</div>
+      <p>The signal is symmetric about the vertical axis. Example: x(t) = t²</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·6</div><span>Working principle of 3-phase induction motor is based on: __________</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p class="correct">Electromagnetic Induction (Faraday's Law)</p>
+      <p>3-phase supply creates a Rotating Magnetic Field (RMF) in the stator → induces EMF in rotor → rotor current → torque → rotation.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·7</div><span>A signal with finite average power but infinite total energy is: __________</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p class="correct">Power Signal</p>
+      <div class="formula">0 &lt; P &lt; ∞  and  E = ∞</div>
+      <p>Example: Periodic sinusoidal AC waveform.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·8</div><span>The XOR gate can be derived using: __________</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p class="correct">NAND gates (or NOR gates)</p>
+      <div class="formula">Using 4 NAND gates:
+G1 = (A NAND B)
+G2 = (A NAND G1)
+G3 = (B NAND G1)
+Y  = G2 NAND G3  =  A ⊕ B</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·9</div><span>State Kirchhoff's Current Law (KCL) with a simple example.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Statement:</strong> The algebraic sum of all currents at a node equals zero.</p>
+      <div class="formula">∑I = 0  →  I_in = I_out</div>
+      <p><strong>Example:</strong> 10A enters a node; one branch = 6A → other branch = 4A</p>
+      <div class="formula gold">10 = 6 + 4 ✓</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·10</div><span>A 4-to-1 Multiplexer has how many select lines?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p class="correct">2 select lines</p>
+      <p>Because 2² = 4 — covers all 4 inputs (S1S0 = 00, 01, 10, 11).</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·11</div><span>Explain the working principle of a PN junction diode.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>Forward Bias</h4>
+      <p>+ve → P-side, −ve → N-side. Depletion layer narrows → current flows freely.</p>
+      <h4>Reverse Bias</h4>
+      <p>+ve → N-side, −ve → P-side. Depletion layer widens → current blocked.</p>
+      <p>Diode acts as a one-way valve for current — conducts only in forward direction.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·12</div><span>Define Continuous-Time (CT) and Discrete-Time (DT) signals.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>CT Signal:</strong> Defined at every instant of time. Ex: ECG, temperature, AC waveform.</p>
+      <p><strong>DT Signal:</strong> Defined only at specific discrete time intervals (sampled). Ex: Digital meter readings, computer data.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S1·13</div><span>Find the supply current "I" of the circuit shown below.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p style="color:var(--muted)">Circuit diagram required from paper. General method:</p>
+      <div class="formula">Series:   I = V / R_T  where R_T = R₁ + R₂ + R₃
+Parallel: I = V / R_eq  where 1/R_eq = 1/R₁ + 1/R₂ + 1/R₃</div>
+      <p>Identify the circuit type from the diagram, compute R_T, then I = V / R_T.</p>
+    </div>
+  </div>
+
+  <p class="qe-set-label">Set 2 <span>— 31 Questions · Short, Long &amp; Numericals</span></p>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·1</div><span>Define Universal Gates and list them.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Universal Gates:</strong> Gates capable of implementing any Boolean logic function on their own, without needing any other gate type.</p>
+      <p class="correct">NAND gate and NOR gate</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·2</div><span>Find equivalent resistance of 6Ω, 12Ω, and 18Ω in parallel.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">1/R_T = 1/6 + 1/12 + 1/18
+      = 6/36 + 3/36 + 2/36
+      = 11/36</div>
+      <div class="formula gold">R_T = 36/11 ≈ 3.27 Ω</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·3</div><span>Define real, reactive, and apparent power. Mention units.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Type</th><th>Formula</th><th>Unit</th></tr>
+        <tr><td>Real Power (P)</td><td>P = VI cos φ</td><td>Watt (W)</td></tr>
+        <tr><td>Reactive Power (Q)</td><td>Q = VI sin φ</td><td>VAR</td></tr>
+        <tr><td>Apparent Power (S)</td><td>S = VI</td><td>VA</td></tr>
+      </table>
+      <div class="formula">S² = P² + Q²</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·4</div><span>Illustrate Closed Loop System with neat diagram and example.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Reference Input → [Error Detector] → [Controller] → [Plant] → Output
+              ↑                                                              |
+              └──────────────────── Feedback (Sensor) ──────────────────────┘</div>
+      <ol><li>Desired input set</li><li>Controller drives the plant</li><li>Output measured by sensor</li><li>Feedback compared to input → error computed</li><li>Error corrected continuously</li></ol>
+      <p><strong>Example:</strong> AC thermostat — temperature sensor feeds back actual temp; compressor adjusts to reach set point.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·5</div><span>Add (11011)₂ + (10110)₂</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">  11011   (= 27)
++ 10110   (= 22)
+--------</div>
+      <div class="formula gold">= 110001   (= 49) ✓</div>
+      <p>Carry chain: rightmost bits → 1+0=1, 1+1=10, 0+1=1, 1+0=1, 1+1=10 → gives 110001.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·6</div><span>Draw the logic symbol and truth table of an OR gate.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Y = A + B  (output is 1 if ANY input is 1)</div>
+      <table>
+        <tr><th>A</th><th>B</th><th>Y</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·7</div><span>Define a stepper motor and briefly explain its working principle.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Definition:</strong> A motor that rotates in fixed angular steps when electrical pulses are applied.</p>
+      <ol><li>Pulse applied → stator winding energized</li><li>Magnetic field produced</li><li>Rotor aligns with field = one step</li><li>Next pulse = next winding energized = next step</li><li>Continuous pulses = controlled rotation</li></ol>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·8</div><span>Define real, reactive, and apparent power. (repeat)</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>Same as S2·3 — Real Power P (W), Reactive Power Q (VAR), Apparent Power S (VA).</p>
+      <div class="formula">P = VI cosφ | Q = VI sinφ | S = VI | S² = P² + Q²</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·9</div><span>Compare NPN and PNP transistors with symbols.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Property</th><th>NPN</th><th>PNP</th></tr>
+        <tr><td>Structure</td><td>N–P–N</td><td>P–N–P</td></tr>
+        <tr><td>Emitter arrow</td><td>Points outward</td><td>Points inward</td></tr>
+        <tr><td>Majority carriers</td><td>Electrons</td><td>Holes</td></tr>
+        <tr><td>Base bias</td><td>+ve w.r.t. emitter</td><td>−ve w.r.t. emitter</td></tr>
+        <tr><td>Switching speed</td><td>Faster</td><td>Slower</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·10</div><span>Distinguish between Open-loop and Closed-loop control systems with examples.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Open Loop</th><th>Closed Loop</th></tr>
+        <tr><td>No feedback</td><td>Feedback present</td></tr>
+        <tr><td>Less accurate</td><td>More accurate</td></tr>
+        <tr><td>Simple &amp; cheap</td><td>Complex &amp; costlier</td></tr>
+        <tr><td>Cannot self-correct</td><td>Corrects errors automatically</td></tr>
+        <tr><td>Ex: Iron, Toaster</td><td>Ex: AC thermostat, Cruise control</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·11</div><span>Peak AC voltage given — calculate effective (RMS) and average voltage.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">V_rms = 0.707 × Vₘ   (effective/RMS voltage)
+V_avg = 0.637 × Vₘ   (average voltage)</div>
+      <p>For specific value 100V → see S2·17.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·12</div><span>Derive total resistance and current for a series DC circuit with 3 resistors.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>Same current I flows through all resistors. By KVL:</p>
+      <div class="formula">V = V₁ + V₂ + V₃
+  = IR₁ + IR₂ + IR₃
+  = I(R₁ + R₂ + R₃)</div>
+      <div class="formula gold">∴ R_T = R₁ + R₂ + R₃
+   I  = V / R_T</div>
+      <p><strong>Circuit:</strong> +V —[R₁]—[R₂]—[R₃]— −V (single loop, same current everywhere)</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·13</div><span>Convert (2F)₁₆ into decimal.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">(2F)₁₆ = 2 × 16¹ + F × 16⁰
+       = 32 + 15</div>
+      <div class="formula gold">= 47₁₀</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·14</div><span>Prove NAND/NOR are universal by realising AND and NOT from them.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>Using NAND</h4>
+      <div class="formula">NOT:  Y = (A · A)' = A'          [feed A into both inputs]
+AND:  Y = ((A · B)')' = A · B   [NAND followed by NOT]</div>
+      <h4>Using NOR</h4>
+      <div class="formula">NOT:  Y = (A + A)' = A'          [feed A into both inputs]
+OR:   Y = ((A + B)')' = A + B   [NOR followed by NOT]</div>
+      <p>Since AND + NOT (or OR + NOT) can build any Boolean function → both are <strong>universal</strong>.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·15</div><span>Explain Even and Odd signals with mathematical conditions.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Even: x(t) = x(−t)   → symmetric about y-axis   | Ex: t²
+Odd:  x(t) = −x(−t)  → antisymmetric about origin | Ex: t</div>
+      <p>Any signal can be split: Even part = [x(t)+x(−t)]/2 | Odd part = [x(t)−x(−t)]/2</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·16</div><span>Compare series and parallel DC circuits with diagrams.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>Series</th><th>Parallel</th></tr>
+        <tr><td>Same current</td><td>Same voltage</td></tr>
+        <tr><td>Voltage divides</td><td>Current divides</td></tr>
+        <tr><td>R_T = R₁+R₂+R₃</td><td>1/R_T = 1/R₁+1/R₂+1/R₃</td></tr>
+        <tr><td>R_T &gt; any R</td><td>R_T &lt; smallest R</td></tr>
+        <tr><td>One fail breaks all</td><td>Others still work</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·17</div><span>Peak AC voltage = 100V. Calculate effective and average voltage.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Vₘ = 100 V
+V_rms = 0.707 × 100 = 70.7 V</div>
+      <div class="formula gold">V_avg = 0.637 × 100 = 63.7 V</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·18</div><span>Explain operating principles of Diode, BJT, and MOSFET with differences.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>Diode</h4>
+      <p>2-terminal (Anode, Cathode). Forward bias → conducts. Reverse bias → blocks. Used for rectification.</p>
+      <h4>BJT (Current-Controlled)</h4>
+      <p>3-terminal (E, B, C). Small base current controls large collector current. Current gain β = Ic / Ib.</p>
+      <h4>MOSFET (Voltage-Controlled)</h4>
+      <p>3-terminal (G, D, S). Gate voltage controls drain current. Gate insulated by oxide → zero gate current → very high input impedance.</p>
+      <table>
+        <tr><th>Device</th><th>Terminals</th><th>Controlled by</th><th>Use</th></tr>
+        <tr><td>Diode</td><td>2</td><td>Voltage polarity</td><td>Rectification</td></tr>
+        <tr><td>BJT</td><td>3 (E,B,C)</td><td>Base current</td><td>Amplification</td></tr>
+        <tr><td>MOSFET</td><td>3 (G,D,S)</td><td>Gate voltage</td><td>Switching / ICs</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·19</div><span>Define periodic and aperiodic signals with neat sketches.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Periodic:</strong> Repeats after fixed period T.</p>
+      <div class="formula">x(t) = x(t + T)  for all t  |  Ex: sine wave</div>
+      <p><strong>Aperiodic:</strong> Does not repeat at any regular interval.</p>
+      <div class="formula">No T exists such that x(t) = x(t+T)  |  Ex: ECG, single pulse</div>
+      <p><em>Sketch hint:</em> Sine wave (periodic) vs a single rectangular pulse (aperiodic).</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·20</div><span>Compare BJT and MOSFET. Why is MOSFET voltage-controlled?</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <table>
+        <tr><th>BJT</th><th>MOSFET</th></tr>
+        <tr><td>Current-controlled</td><td>Voltage-controlled</td></tr>
+        <tr><td>Low input impedance</td><td>Very high input impedance</td></tr>
+        <tr><td>Base current needed</td><td>No gate current (oxide insulates)</td></tr>
+        <tr><td>Bipolar (e⁻ + holes)</td><td>Unipolar (one carrier)</td></tr>
+        <tr><td>Higher power dissipation</td><td>Lower power, faster switching</td></tr>
+      </table>
+      <p><strong>Why voltage-controlled:</strong> Gate is separated from channel by SiO₂ (oxide) insulating layer. No current can flow into gate — only gate voltage creates electric field that modulates channel conductivity. Hence called Field Effect Transistor.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·21</div><span>Explain working of SR and JK flip-flops with truth tables.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>SR Flip-Flop</h4>
+      <table>
+        <tr><th>S</th><th>R</th><th>Q (next)</th><th>State</th></tr>
+        <tr><td>0</td><td>0</td><td>Q (unchanged)</td><td>Hold</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td><td>Set</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td><td>Reset</td></tr>
+        <tr><td>1</td><td>1</td><td>Invalid</td><td>Forbidden ⚠️</td></tr>
+      </table>
+      <h4>JK Flip-Flop (improves SR — eliminates forbidden state)</h4>
+      <table>
+        <tr><th>J</th><th>K</th><th>Q (next)</th><th>State</th></tr>
+        <tr><td>0</td><td>0</td><td>Q (unchanged)</td><td>Hold</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td><td>Set</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td><td>Reset</td></tr>
+        <tr><td>1</td><td>1</td><td>Q'</td><td>Toggle ← key advantage</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·22</div><span>How is energy charged in block rate tariff? Illustrate with example.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p>Different unit rates applied to different consumption slabs.</p>
+      <p><strong>Example:</strong> 250 units. Rates: 0–100 @ ₹3, 101–300 @ ₹5</p>
+      <div class="formula">100 × ₹3 = ₹300
+150 × ₹5 = ₹750</div>
+      <div class="formula gold">Total = ₹1050</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·23</div><span>2's complement: a) 9 − 4   b) 27 − 75</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>a) 9 − 4 = 5</h4>
+      <div class="formula">9 = 1001,  4 = 0100
+2's complement of 4: flip→1011, +1→1100
+  1001 + 1100 = 10101
+Discard carry → 0101 = 5 ✓</div>
+      <h4>b) 27 − 75 = −48</h4>
+      <div class="formula">27 = 0011011 (7-bit)
+75 = 1001011 (7-bit)
+2's complement of 75: flip→0110100, +1→0110101
+  0011011 + 0110101 = 1010000
+No carry out → result NEGATIVE
+2's complement of 1010000: flip→0101111, +1→0110000 = 48</div>
+      <div class="formula gold">Answer: −48 ✓</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·24</div><span>SR and JK flip-flops with truth tables. (repeat)</span><span class="toggle">+</span></div>
+    <div class="qa-a"><p>Same as S2·21 above.</p></div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·25</div><span>Series circuit resistance derivation. (repeat)</span><span class="toggle">+</span></div>
+    <div class="qa-a"><p>Same as S2·12 above.</p></div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·26</div><span>Represent basic gates with symbol and truth table.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <h4>AND  Y = A·B</h4>
+      <table><tr><th>A</th><th>B</th><th>Y</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></table>
+      <h4>OR  Y = A+B</h4>
+      <table><tr><th>A</th><th>B</th><th>Y</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></table>
+      <h4>NOT  Y = A'</h4>
+      <table><tr><th>A</th><th>Y</th></tr><tr><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td></tr></table>
+      <h4>NAND  Y = (A·B)'</h4>
+      <table><tr><th>A</th><th>B</th><th>Y</th></tr><tr><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></table>
+      <h4>NOR  Y = (A+B)'</h4>
+      <table><tr><th>A</th><th>B</th><th>Y</th></tr><tr><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></table>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·27</div><span>Define Continuous-Time and Discrete-Time signals.</span><span class="toggle">+</span></div>
+    <div class="qa-a"><p>Same as S1·12 — CT: defined at every instant; DT: defined at discrete intervals only.</p></div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·28</div><span>Explain working principle of PN junction diode. (repeat)</span><span class="toggle">+</span></div>
+    <div class="qa-a"><p>Same as S1·11 — Forward bias conducts; reverse bias blocks.</p></div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·29</div><span>What is peak value of AC waveform? Indicate in waveform diagram.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <p><strong>Peak Value (Vₘ):</strong> The maximum value of voltage or current in one complete cycle.</p>
+      <div class="formula">v(t) = Vₘ sin(ωt)
+Peak at ωt = 90° → v = Vₘ (crest of sine wave)
+Trough at ωt = 270° → v = −Vₘ</div>
+      <p><em>Sketch:</em> Draw sine wave, mark top crest as +Vₘ and bottom as −Vₘ.</p>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·30</div><span>If I = 141.4 sin(314t), find max current, frequency, time period.</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">Standard form: I = Im sin(ωt)
+Im = 141.4 A  (maximum / peak current)
+ω  = 314 rad/s
+f  = ω / 2π = 314 / 6.28 ≈ 50 Hz
+T  = 1 / f = 1 / 50 = 0.02 s = 20 ms</div>
+      <div class="formula gold">Im = 141.4 A | f = 50 Hz | T = 0.02 s
+Irms = 141.4 / √2 ≈ 100 A</div>
+    </div>
+  </div>
+
+  <div class="qa-card" data-unit="qe">
+    <div class="qa-q" onclick="toggle(this)"><div class="qnum">S2·31</div><span>Binary addition: (a) 11+11  (b) 100+10  (c) 111+11</span><span class="toggle">+</span></div>
+    <div class="qa-a">
+      <div class="formula">a)   11 + 11 = 110   (3 + 3 = 6) ✓</div>
+      <div class="formula">b)  100 + 10 = 110   (4 + 2 = 6) ✓</div>
+      <div class="formula gold">c)  111 + 11 = 1010  (7 + 3 = 10) ✓</div>
+    </div>
+  </div>
+
 </section>
 
 </div>
